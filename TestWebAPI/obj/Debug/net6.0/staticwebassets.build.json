@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "6ZUVr3aVwNqY4zHxDFrkx8xM6mSHj+PTchYLWK1JNaU=",
+  "Source": "HICOWebAPI",
+  "BasePath": "_content/HICOWebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
