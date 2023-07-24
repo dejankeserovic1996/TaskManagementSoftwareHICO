@@ -19,7 +19,7 @@ namespace HICOWebAPI.Controllers
         [HttpGet("api/tasks/{id}")]
         public IActionResult GetTask(Guid id)
         {
-            var task = TaskService.tasks.FirstOrDefault(m => m.ID == id);
+            var task = TaskService.tasks.FirstOrDefault(t => t.ID == id);
             if (task == null)
             {
                 return NotFound();
@@ -28,10 +28,10 @@ namespace HICOWebAPI.Controllers
             return Ok(task);
         }
 
-        [HttpGet("api/tasks/material/{id}")]
-        public IActionResult GetMaterial(Guid id)
+        [HttpGet("api/tasks/material/{taskId}")]
+        public IActionResult GetMaterial(Guid taskId)
         {
-            var task = TaskService.tasks.FirstOrDefault(m => m.ID == id);
+            var task = TaskService.tasks.FirstOrDefault(t => t.ID == taskId);
             if (task == null)
             {
                 return NotFound();
@@ -128,30 +128,6 @@ namespace HICOWebAPI.Controllers
             }
 
             return Ok(units);
-        }
-
-        [HttpPost]
-        [Route("api/tasks/{taskId}/addmaterial/{materialId}")]
-        public IActionResult AddMaterialToTask(Guid taskId, Guid materialId, TaskMaterialUsage usage)
-        {
-            var task = TaskService.tasks.FirstOrDefault(t => t.ID == taskId);
-            var material = MaterialService.materials.FirstOrDefault(m => m.ID == materialId);
-
-            if (task == null || material == null)
-            {
-                return NotFound();
-            }
-
-            if (!UnitService.CanSwitchUnit(usage.UnitOfMeasurement, material.UnitOfIssue))
-            {
-                return BadRequest("Invalid unit switch.");
-            }
-
-            usage.Task = task;
-            usage.Material = material;
-            task.TaskMaterialUsage = usage;
-
-            return Ok(task);
         }
 
         [HttpDelete("api/tasks/{id}")]
