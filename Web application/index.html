@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        HICO
+    </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <ul>
+        <li><a href="./index.html">Materials</a></li>
+        <li><a href="./tasks.html">Tasks</a></li>
+    </ul>
+    <table class="table-50">
+        <tr>
+            <td>
+                <form>
+                    <div>
+                        <label>Part Number</label>
+                        <input type="text" name="partNumber" id="partNumber">
+                    </div>
+                    <div>
+                        <label>ManufacturerCode</label>
+                        <input type="number" name="manufacturerCode" id="manufacturerCode">
+                    </div>
+                    <div>
+                        <label>Price</label>
+                        <input type="number" name="price" id="price">
+                    </div>
+                    <div>
+                        <label>Unit</label>
+                        <select id="unitSelect"></select>
+                    </div>
+                    <div>
+                        <input type="hidden" name="id" id="id">
+                    </div>
+                    <div>
+                        <button onclick="javascript:event.preventDefault();javascript:insert();">Insert</button>
+                        <button onclick="javascript:event.preventDefault();javascript:update();">Update</button>
+                    </div>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <table class="table-100" id="materialList">
+        <thead>
+            <tr>
+                <th>Part Number</th>
+                <th>Manufacturer Code</th>
+                <th>Price</th>
+                <th>Unit</th>
+                <th></th>
+                <th style="display: none;">ID</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script src="material.js"></script>
+</body>
+</html>
